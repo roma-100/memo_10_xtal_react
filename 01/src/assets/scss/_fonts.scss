@@ -1,0 +1,25 @@
+
+@mixin font($font_name, $file_name, $weight, $style) {
+
+@font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"),
+        url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+
+ @include font("AvenirLTStd-Black", "AvenirLTStd-Black", "400", "normal");
+@include font("AvenirLTStd-Roman", "AvenirLTStd-Roman", "400", "normal");
+@include font("Lobster-Regular", "Lobster-Regular", "400", "normal");
+@include font("Mina-Bold", "Mina-Bold", "400", "normal");
+@include font("Montserrat-Bold", "Montserrat-Bold", "400", "normal");
+@include font("NotoSans-Bold", "NotoSans-Bold", "400", "normal");
+@include font("NotoSans-Regular", "NotoSans-Regular", "400", "normal");
+@include font("Raleway-Regular", "Raleway-Regular", "400", "normal");
+@include font("Raleway-SemiBold", "Raleway-SemiBold", "400", "normal");
+@include font("Roboto-Bold", "Roboto-Bold", "400", "normal");
+@include font("Roboto-Medium", "Roboto-Medium", "400", "normal");
+@include font("RussoOne-Regular", "RussoOne-Regular", "400", "normal");

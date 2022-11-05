@@ -17,7 +17,7 @@ const genModel = props.gen_models.models.map((x, index) => {
       genModelTitle={x.name} 
       genModelFrequencyRange={x.frequencyRange}
       genModelPackaging={x.packaging} 
-      genModelPicture={x.pictureName}
+      genModelPicture={"./pimages/types200/" + x.pictureTag + "_200px.png"}
       genModelIsActive ={x.isActive}
       genModelTemperatureRange ={x.temperatureRangeSelected}
       genModelStabilityLimit ={x.stabilityLimit}
@@ -53,11 +53,11 @@ const genModel = props.gen_models.models.map((x, index) => {
         <div className="gen-models">{genModel}</div>
       </div>
 
-      <div>
+{/*       <div>
         {" "}
-        {/* <p>GenModelsHello Props:</p>
-        <pre>{JSON.stringify(props, null, 2)}</pre> */}
-      </div>
+        <p>GenModelsHello Props:</p>
+        <pre>{JSON.stringify(props, null, 2)}</pre>
+      </div> */}
     </>
   );
 };

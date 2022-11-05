@@ -1,0 +1,25 @@
+{
+  "Frequency range": {
+    "Fundamental 8...150MHz": {
+      "Stability 3ppb": {
+        "Packaging":[
+        "<a href='#' class='tree-link'>XBO37/8 (DIP8 15x15x9.5 mm)<br><img class='tree_pict' src='img/type2.jpg' alt='XBO37/8 (DIP8 15x15x9.5 mm)'></a>", 
+        "<a href='#' class='tree-link'>XBO37/8S (DIP8 SMD)<br><img class='tree_pict' src='img/type2.jpg' alt='XBO37/8S (DIP8 SMD)'></a>"]},
+      "Stability 2ppb": {
+        "Packaging":[
+        "<a href='#' class='tree-link'>XBO37/14 (DIP14 15x21x9.5 mm)<br> <img class='tree_pict' src='img/type2_200px.png' alt='XBO37/14 (DIP14 15x21x9.5 mm)'></a>",
+         "<a href='#' class='tree-link'>XBO37/14S (DIP14 SMD)<br> <img class='tree_pict' src='img/type3_200px.png' alt='XBO37/14S (DIP14 SMD)'></a>"]},
+      "Stability 0.5ppb": {
+          "Packaging":["<a href='#' class='tree-link'>XBO37/R (Steel case 20x20x12.6 mm)<br><img class='tree_pict' src='img/type1_200px.png' alt='XBO37/R (Steel case 20x20x12.6 mm)'></a>"]}      
+      },
+      "With multiplication 24...300MHz": {
+        "Stability 2ppb": {
+          "Packaging":[
+          "<a href='#' class='tree-link'>XBO37H/14 (DIP14 15x21x9.5 mm)<br><img class='tree_pict' src='img/type4_200px.png' alt='XBO37H/14 (DIP14 15x21x9.5 mm)'></a>", 
+          "<a href='#' class='tree-link'>XBO37H/14S (DIP14 SMD)<br><img class='tree_pict' src='img/type5_200px.png' alt='XBO37H/14S (DIP14 SMD)'></a>"]
+        }
+      }
+    }
+  
+
+}
