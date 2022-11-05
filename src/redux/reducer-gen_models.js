@@ -10,6 +10,7 @@ const FILTER_FREQUENCY_UPDATE = "FILTER_FREQUENCY_UPDATE";
 const FILTER_FREQUENCY_APPLY = "FILTER_FREQUENCY_APPLY";
 
 const FILTER_TEMPERATURE_RANGE_UPDATE = "FILTER_TEMPERATURE_RANGE_UPDATE";
+const MARK_MODELS_BY_TEMPERATURE_RANGE_AND_STABILITY = "MARK_MODELS_BY_TEMPERATURE_RANGE_AND_STABILITY"
 const CREATE_TEMP_RANGE_STABILITY_ARRAY = "CREATE_TEMP_RANGE_STABILITY_ARRAY"
 
 
@@ -18,90 +19,106 @@ const initialState = {
     {
       "id": 1,
       "name": "XBO8",
-      "frequencyRange": "8-150 MHz",
+      "frequencyRange": "8-150 MHz Fundamental",
       "frequencyType": "fundamental",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 3 ppb",
       "packaging": "DIP8 15x15x9.5 mm",
       "pictureName": "./pimages/type1_200px.png",
-      "isActive": true
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 2,
       "name": "XBO8S",
-      "frequencyRange": "8-150",
+      "frequencyRange": "8-150 Fundamental",
       "frequencyType": "fundamental",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 3 ppb",
       "packaging": "DIP8 SMD",
       "pictureName": "./pimages/type2_200px.png",
-      "isActive": true
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 3,
       "name": "XBO14",
-      "frequencyRange": "8-150 MHz",
+      "frequencyRange": "8-150 MHz Fundamental",
       "frequencyType": "fundamental",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 2 ppb",
       "packaging": "DIP14 15x21x9.5 mm",
       "pictureName": "./pimages/type3_200px.png",
-      "isActive": true
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 4,
       "name": "XBO14S",
-      "frequencyRange": "8-150 MHz",
+      "frequencyRange": "8-150 MHz Fundamental",
       "frequencyType": "fundamental",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 2 ppb",
       "packaging": "DIP14 SMD",
       "pictureName": "./pimages/type4_200px.png",
-      "isActive": true
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 5,
       "name": "XBO20",
-      "frequencyRange": "8-150 MHz",
+      "frequencyRange": "8-150 MHz Fundamental",
       "frequencyType": "fundamental",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 0.5 ppb",
       "packaging": "Steel case 20x20x12.6 mm",
       "pictureName": "./pimages/type5_200px.png",
-      "isActive": true
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 6,
       "name": "XBOH20",
-      "frequencyRange": "24-300 MHz",
+      "frequencyRange": "24-300 MHz Multiplication",
       "frequencyType": "with multiplication",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 0.5 ppb",
       "packaging": "Steel case 20x20x12.6 mm",
-      "pictureName": "./pimages/type5_200px.png",
-      "isActive": true
+      "pictureName": "./pimages/type6_200px.png",
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 7,
       "name": "XBOH14",
-      "frequencyRange": "24-300 MHz",
+      "frequencyRange": "24-300 MHz Multiplication",
       "frequencyType": "with multiplication",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 2 ppb ",
       "packaging": "DIP14 15x21x9.5 mm",
-      "pictureName": "./pimages/type2_200px.png",
-      "isActive": true
+      "pictureName": "./pimages/type7_200px.png",
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     },
     {
       "id": 8,
       "name": "XBOH14S",
-      "frequencyRange": "24-300 MHz",
+      "frequencyRange": "24-300 MHz Multiplication",
       "frequencyType": "with multiplication",
       "temperatureRange": "(-40+85)℃",
       "temperatureStability": "To 2 ppb ",
       "packaging": "DIP14 SMD ",
-      "pictureName": "./pimages/type2_200px.png",
-      "isActive": true
+      "pictureName": "./pimages/type8_200px.png",
+      "isActive": true,
+      "temperatureRangeSelected": "",
+      "stabilityLimit": ""
     }
   ],
   temperatureRange: [
@@ -255,6 +272,41 @@ const gen_modelsReducer = (state = initialState, action) => {
     return stateCopy
   } 
 
+  if (action.type === MARK_MODELS_BY_TEMPERATURE_RANGE_AND_STABILITY) {
+    
+    const selRange = state.temperatureRange.filter(rangeItem => rangeItem.range === state.filterTemperatureRange)
+    /* [{"id":5,"name":"E","range":"-60ºC..85ºC","modelsStability":[{"model":"XBO8","stability":200,"stabilityLimit":10},{"model":"XBO8S","stability":200,"stabilityLimit":10},{"model":"XBO14","stability":200,"stabilityLimit":5},{"model":"XBO14S","stability":200,"stabilityLimit":5},{"model":"XBO20","stability":200,"stabilityLimit":5},{"model":"XBOH20","stability":200,"stabilityLimit":5},{"model":"XBOH14","stability":200,"stabilityLimit":20},{"model":"XBOH14S","stability":200,"stabilityLimit":20}]}] */
+    const selRangeModelsArray = selRange[0].modelsStability
+    /* [{"model":"XBO8","stability":200,"stabilityLimit":10},{"model":"XBO8S","stability":200,"stabilityLimit":10},{"model":"XBO14","stability":200,"stabilityLimit":5},{"model":"XBO14S","stability":200,"stabilityLimit":5},{"model":"XBO20","stability":200,"stabilityLimit":5},{"model":"XBOH20","stability":200,"stabilityLimit":5},{"model":"XBOH14","stability":200,"stabilityLimit":20},{"model":"XBOH14S","stability":200,"stabilityLimit":20}] */
+    //console.log(Array.from(new Set([...state.models, ...selRangeModelsArray])))
+    
+    const selRangeModelStabilityArray = selRangeModelsArray.map(item => item.stabilityLimit)
+          .filter((value, index, self) => self.indexOf(value) === index)
+    /* [10,5,20]  Not need*/
+    
+    const updateModelsRangeAndStability = state.models
+      .map((model, index) => { 
+        const stabilityLim = selRangeModelsArray.filter((value) => value.model === model.name)[0].stabilityLimit
+        return {...model,
+          stabilityLimit: stabilityLim,
+          temperatureRangeSelected: state.filterTemperatureRange
+        }
+        //return selRangeModelsArray.filter((value) => value.model === model.name)
+      })
+      //const test2 = selRangeModelsArray.filter((value) => value.model === "XBO8")
+      //console.log('selRangeModelsArray: ' + selRangeModelsArray)
+      //console.log('test2 ' + test2)
+      //console.log('test ' + updateModelsRangeAndStability)
+
+      //debugger
+
+    const stateCopy = { 
+        ...state,
+        models: updateModelsRangeAndStability
+    }
+    return stateCopy
+  } 
+
   if (action.type === FILTER_FREQUENCY_APPLY) {
 
     if (!state.filterFrequencyType) {return {...state}}  //empty test
@@ -288,9 +340,10 @@ const filterFrequencyFreeApplyAC = ({type: FILTER_FREQUENCY_FREE_APPLY});
 
 const filterFrequencyUpdateAC = valueType => ({type: FILTER_FREQUENCY_UPDATE, valueType});
 const filterFrequencyApplyAC = ({type: FILTER_FREQUENCY_APPLY});
-//CREATE_TEMP_RANGE_STABILITY_ARRAY
+//MARK_MODELS_BY_TEMPERATURE_RANGE_AND_STABILITY
 const filterTemperatureRangeUpdateAC = valueRange => ({type: FILTER_TEMPERATURE_RANGE_UPDATE, valueRange});
 const createTemperatureRangeStabilityArray = ({type: CREATE_TEMP_RANGE_STABILITY_ARRAY});
+const mark_mdels_by_temperature_range_and_stability = ({type:MARK_MODELS_BY_TEMPERATURE_RANGE_AND_STABILITY})
 
 export const filterFrequencyTypeTC = (event) =>{
   
@@ -301,6 +354,7 @@ export const filterFrequencyTypeTC = (event) =>{
     //dispatch(filterFrequencyFreeApplyAC)
     dispatch(filterFrequencyUpdateAC (valueType))
     dispatch(filterFrequencyApplyAC)
+    
 
   }
 }
@@ -310,6 +364,7 @@ export const filterTemperatureRangeTC = (event) =>{
   return (dispatch) => {
     dispatch(filterTemperatureRangeUpdateAC(valueRange))
     dispatch(createTemperatureRangeStabilityArray)
+    dispatch(mark_mdels_by_temperature_range_and_stability)
 
   }
 }

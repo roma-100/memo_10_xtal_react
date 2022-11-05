@@ -35,7 +35,7 @@ function App(props) {
             <Route path="/xtest" element={<Xtest />} />
             <Route
               path="/*"
-              element={<ComingSoon />}
+              element={<GenModelsHelloContainer />}
             />
           </Routes>
         </main>

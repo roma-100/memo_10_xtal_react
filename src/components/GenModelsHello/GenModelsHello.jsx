@@ -1,27 +1,11 @@
 import React from "react";
 import GenModel from "./GenModel/GenModel";
+import FilterFrequencyType from "./GenFilter/FlterFrequencyType"
+import FilterTemperatureRange from "./GenFilter/FlterTemperatureRange"
 /* https://mui.com/material-ui/react-radio-button/#api */
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 
 const GenModelsHello = (props) => {
 
- /* start test */
- //console.log(props)
-
-const handleChangeFrequencyType = event => {
-  //props.filterFrequencyTypeAC(event.target.value)
-  console.log ('look: ' + event.target.value)
-  //props.filterFrequencyTypeTC(event.target.value)
-  //props.tt(event.target.value)
-  
-};
-
-/* console.log('PPPROPS: ' + props) */
- /* end test */
 
 const genModel = props.gen_models.models.map((x, index) => {
   return (
@@ -30,9 +14,12 @@ const genModel = props.gen_models.models.map((x, index) => {
       key={x.id}
       genModelId={x.id} 
       genModelTitle={x.name} 
+      genModelFrequencyRange={x.frequencyRange}
       genModelPackaging={x.packaging} 
       genModelPicture={x.pictureName}
       genModelIsActive ={x.isActive}
+      genModelTemperatureRange ={x.temperatureRangeSelected}
+      genModelStabilityLimit ={x.stabilityLimit}
       />      
     );
   })
@@ -40,13 +27,23 @@ const genModel = props.gen_models.models.map((x, index) => {
   return (
     <>
       <div className="gen-models-filter__wrap">
-        <h2>Quick Filter</h2>
-      <FilterFrequencyType filterFrequencyTypeTC={props.filterFrequencyTypeTC}/>
-      <hr />
-      <FilterTemperatureRange 
-      filterTemperatureRangeTC={props.filterTemperatureRangeTC}
-      temperatureRangeArray={props.gen_models.temperatureRangeArray}
+        <h2>Assistant</h2>
+        <div className="gen-models-filter">
+          <div className="gen-models-filter__title"><span>Frequency Type</span></div>
+          <div className="gen-models-filter__source">
+          <FilterFrequencyType filterFrequencyTypeTC={props.filterFrequencyTypeTC}/>
+          </div>
+        </div>
+        <div className="gen-models-filter">
+          <div className="gen-models-filter__title"><span>Temperature Range</span></div>
+          <div className="gen-models-filter__source">
+          <FilterTemperatureRange 
+            filterTemperatureRangeTC={props.filterTemperatureRangeTC}
+            temperatureRangeArray={props.gen_models.temperatureRangeArray}
       />
+          </div>
+        </div>
+
 
       {/* {temperatureRange()} */}
       </div>
@@ -57,67 +54,15 @@ const genModel = props.gen_models.models.map((x, index) => {
 
       <div>
         {" "}
-        <p>GenModelsHello Props:</p>
-        <pre>{JSON.stringify(props, null, 2)}</pre>
+        {/* <p>GenModelsHello Props:</p>
+        <pre>{JSON.stringify(props, null, 2)}</pre> */}
       </div>
     </>
   );
 };
-/* ++++++++  FilterFrequencyType ++++++*/
-const FilterFrequencyType = props => {
-  return (
-    <FormControl onClick={props.filterFrequencyTypeTC}>
-    <FormLabel id="demo-radio-buttons-group-label">FrequencyType</FormLabel>
-    <RadioGroup
-      row
-      aria-labelledby="radio-buttons-group-label"
-      defaultValue=""
-      name="radio-buttons-group-frequency-type"
-    >
-      <FormControlLabel value="fundamental" control={<Radio />} label="Fundamental"  />
-      <FormControlLabel value="with multiplication" control={<Radio />} label="with Multiplication" />
-
-    </RadioGroup>
-  </FormControl>
-  )
-}
-/* ....  FilterFrequencyType ....*/
 
 
-/* ++++ FilterTemperatureRange ++++ */
-const FilterTemperatureRange = props => {
-  
-  //temperatureRangeArray
-  const temperatureRange = () => {
-    return props.temperatureRangeArray.map((rangeItem, index) =>{
-      return (<FilterTemperatureRangeRadioItem 
-        key={index}
-        value = {rangeItem}
-        label = {rangeItem}
-      />)
-    })
-  }
 
-  return (
-    <FormControl onClick={props.filterTemperatureRangeTC}>
-    <FormLabel id="demo-radio-buttons-group-label">TemperatureRange</FormLabel>
-    <RadioGroup
-      row
-      aria-labelledby="radio-buttons-group-label"
-      defaultValue=""
-      name="radio-buttons-group-temperature-range"
-    >
-    {temperatureRange()} 
 
-    </RadioGroup>
-  </FormControl>
-  )
-}
-
-const FilterTemperatureRangeRadioItem = props => {
-  return (
-    <FormControlLabel value={props.value} control={<Radio />} label={props.label}  />
-  )
-}
 
 export default GenModelsHello;

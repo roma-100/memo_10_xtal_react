@@ -1104,20 +1104,8 @@ body {
     margin: 0;
     padding: 0.5em 0;
     width: 100%;
-    color: white;
-    /* color: $color-secondary-2-4; */
-    /* background-color: $color-secondary-2-2; */
-    background-color: rgba(31, 105, 162, 0.9);
-    /* opacity: .8; */
-  }
-
-  .menu > li > a {
-    /* text-decoration: none; */
-    color: white;
-  }
-
-  .menu > li > a:hover {
-    color: #FCFC21;
+    color: #011E35;
+    background-color: #1F69A2;
   }
 
   .menu > li:not(:last-child) {

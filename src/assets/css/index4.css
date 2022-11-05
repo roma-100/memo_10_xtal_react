@@ -387,15 +387,12 @@ body {
   /* height: 32vw; */
 }
 
-.gen-models .gen-model .gen-model__info {
+.gen-models .gen-model .gen-model__package {
   font-size: 0.6rem;
 }
 
 .gen-models .gen-model .gen-model__tempr-add-info {
-  font-size: 1rem;
-  background-color: #FCFC21;
-  font-family: "Raleway-SemiBold";
-  color: #C83900;
+  background-color: #e4e3e3;
   width: 90%;
   padding: 0.25rem;
   display: -webkit-box;
@@ -411,6 +408,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.gen-models .gen-model .gen-model__tempr-add-info .gen-model__tempr-range,
+.gen-models .gen-model .gen-model__tempr-add-info .gen-model__tempr-stability {
+  color: #C83900;
 }
 
 .gen-models .gen-model .gen-model__btn,
@@ -1104,20 +1106,8 @@ body {
     margin: 0;
     padding: 0.5em 0;
     width: 100%;
-    color: white;
-    /* color: $color-secondary-2-4; */
-    /* background-color: $color-secondary-2-2; */
-    background-color: rgba(31, 105, 162, 0.9);
-    /* opacity: .8; */
-  }
-
-  .menu > li > a {
-    /* text-decoration: none; */
-    color: white;
-  }
-
-  .menu > li > a:hover {
-    color: #FCFC21;
+    color: #011E35;
+    background-color: #1F69A2;
   }
 
   .menu > li:not(:last-child) {
@@ -1230,15 +1220,12 @@ body {
   /* height: 32vw; */
 }
 
-.gen-models .gen-model .gen-model__info {
+.gen-models .gen-model .gen-model__package {
   font-size: 0.6rem;
 }
 
 .gen-models .gen-model .gen-model__tempr-add-info {
-  font-size: 1rem;
-  background-color: #FCFC21;
-  font-family: "Raleway-SemiBold";
-  color: #C83900;
+  background-color: #e4e3e3;
   width: 90%;
   padding: 0.25rem;
   display: -webkit-box;
@@ -1254,6 +1241,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.gen-models .gen-model .gen-model__tempr-add-info .gen-model__tempr-range,
+.gen-models .gen-model .gen-model__tempr-add-info .gen-model__tempr-stability {
+  color: #C83900;
 }
 
 .gen-models .gen-model .gen-model__btn,
