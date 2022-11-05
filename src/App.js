@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import "./assets/css/index.css";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer"
 import Xtest from "./components/Xtest/Xtest2";
 import {
   BrowserRouter,
@@ -39,6 +40,7 @@ function App(props) {
             />
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );
